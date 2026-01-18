@@ -1,4 +1,4 @@
-package com.rodrigonovoa.pocketbookshelf.ui.theme
+package com.rodrigonovoa.ui.theme
 
 import android.app.Activity
 import android.os.Build

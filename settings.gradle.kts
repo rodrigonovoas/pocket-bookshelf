@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Pocket Bookshelf"
 include(":app")
+include(":domain")
+include(":data")
+include(":ui")

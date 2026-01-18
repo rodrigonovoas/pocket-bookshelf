@@ -1,4 +1,4 @@
-package com.rodrigonovoa.pocketbookshelf
+package com.rodrigonovoa.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rodrigonovoa.pocketbookshelf.ui.theme.PocketBookshelfTheme
+import com.rodrigonovoa.ui.theme.PocketBookshelfTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
