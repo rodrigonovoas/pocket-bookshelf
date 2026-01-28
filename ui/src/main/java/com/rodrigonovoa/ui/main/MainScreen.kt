@@ -2,6 +2,7 @@ package com.rodrigonovoa.ui.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,11 +29,6 @@ fun MainScreen() {
 @Composable
 fun HomeScreen() {
     Text("Home Screen")
-}
-
-@Composable
-fun SearchScreen() {
-    Text("Search Screen")
 }
 
 @Composable
