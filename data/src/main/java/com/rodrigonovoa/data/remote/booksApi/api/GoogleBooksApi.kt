@@ -8,8 +8,8 @@ import retrofit2.http.Query
 
 interface GoogleBooksApi {
     @GET("volumes")
-    suspend fun getBooks(
-        @Query("q") query: String = "flowers+inauthor:keyes",
+    suspend fun searchBooks(
+        @Query("q") query: String,
         @Query("key") apiKey: String = BuildConfig.GOOGLE_BOOKS_API_KEY
     ): BooksListDto
 }
