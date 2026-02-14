@@ -3,6 +3,7 @@ package com.rodrigonovoa.ui.screens.searchScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rodrigonovoa.domain.model.Book
+import com.rodrigonovoa.domain.repository.Resource
 import com.rodrigonovoa.domain.usecase.GetBooksUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.stateIn
 
 class SearchScreenViewModel(
@@ -26,13 +27,13 @@ class SearchScreenViewModel(
             .debounce(400)
             .distinctUntilChanged()
             .filter { it.isNotBlank() }
-            .flatMapLatest { query ->
-                val books = getBooksUseCase(query)
-                books.map { it.items }
+            .flatMapLatest { query -> getBooksUseCase(query) }
+            .mapNotNull { resource ->
+                (resource as? Resource.Success)?.data?.items
             }
             .stateIn(
                 scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000),
+                started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = emptyList()
             )
 

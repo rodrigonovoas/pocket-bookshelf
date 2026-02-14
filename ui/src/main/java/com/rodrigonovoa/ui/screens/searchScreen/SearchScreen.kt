@@ -8,17 +8,17 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.rodrigonovoa.domain.model.VolumeInfo
 
 @Composable
 fun SearchScreen(
     viewModel: SearchScreenViewModel
 ) {
-    val books by viewModel.books.collectAsState()
-    val booksQuery by viewModel.searchQuery.collectAsState()
+    val books by viewModel.books.collectAsStateWithLifecycle()
+    val booksQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
 
     Column {
         TextField(
