@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.stateIn
 
 class SearchScreenViewModel(
@@ -22,19 +21,18 @@ class SearchScreenViewModel(
     private val _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
 
-    val books: StateFlow<List<Book>> =
+    val booksState: StateFlow<Resource<List<Book>>?> =
         _searchQuery
             .debounce(400)
             .distinctUntilChanged()
             .filter { it.isNotBlank() }
-            .flatMapLatest { query -> getBooksUseCase(query) }
-            .mapNotNull { resource ->
-                (resource as? Resource.Success)?.data?.items
+            .flatMapLatest { query ->
+                getBooksUseCase(query)
             }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = emptyList()
+                initialValue = null
             )
 
     fun onSearchChanged(query: String) {
