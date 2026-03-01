@@ -1,0 +1,26 @@
+package com.rodrigonovoa.domain.usecase
+
+import com.rodrigonovoa.domain.model.BookDetail
+import com.rodrigonovoa.domain.repository.GoogleBooksRepository
+import com.rodrigonovoa.domain.repository.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
+import java.io.IOException
+
+
+class GetBookDetailUseCase(
+    private val googleBooksRepository: GoogleBooksRepository
+) {
+    operator fun invoke(bookId: String): Flow<Resource<BookDetail>> = flow {
+        emit(Resource.Loading())
+        try {
+            val result = googleBooksRepository.getBookDetail(bookId)
+            emit(Resource.Success(result))
+        } catch (e: HttpException) {
+            emit(Resource.Error("Error HTTP: ${e.message()}", e.code()))
+        } catch (e: IOException) {
+            emit(Resource.Error("No internet connection."))
+        }
+    }
+}

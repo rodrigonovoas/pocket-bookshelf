@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rodrigonovoa.domain.model.Book
 import com.rodrigonovoa.domain.repository.Resource
-import com.rodrigonovoa.domain.usecase.GetBooksUseCase
+import com.rodrigonovoa.domain.usecase.SearchBooksUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 
 class SearchScreenViewModel(
-    private val getBooksUseCase: GetBooksUseCase
+    private val searchBooksUseCase: SearchBooksUseCase
 ): ViewModel() {
     private val _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
@@ -27,7 +27,7 @@ class SearchScreenViewModel(
             .distinctUntilChanged()
             .filter { it.isNotBlank() }
             .flatMapLatest { query ->
-                getBooksUseCase(query)
+                searchBooksUseCase(query)
             }
             .stateIn(
                 scope = viewModelScope,

@@ -16,13 +16,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.rodrigonovoa.domain.model.VolumeInfo
+import androidx.navigation.NavHostController
 import com.rodrigonovoa.domain.repository.Resource
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun SearchScreen(
-    viewModel: SearchScreenViewModel
+    viewModel: SearchScreenViewModel,
+    navController: NavHostController
 ) {
     val books by viewModel.booksState.collectAsStateWithLifecycle()
     val booksQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
@@ -44,10 +45,13 @@ fun SearchScreen(
                         items = state.data,
                         key = { book -> book.id }
                     ) { book ->
-                        if (book.volumeInfoDto != null) {
-                            SearchListItem(book.volumeInfoDto ?: VolumeInfo.empty())
-                            HorizontalDivider()
-                        }
+                        SearchListItem(
+                            book,
+                            onItemClicked = { bookId ->
+                                navController.navigate("detail/${bookId}")
+                            }
+                        )
+                        HorizontalDivider()
                     }
                 }
             }

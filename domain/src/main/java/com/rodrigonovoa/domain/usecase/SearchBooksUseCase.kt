@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 
-class GetBooksUseCase(
+class SearchBooksUseCase(
     private val googleBooksRepository: GoogleBooksRepository
 ) {
     operator fun invoke(query: String): Flow<Resource<List<Book>>> = flow {

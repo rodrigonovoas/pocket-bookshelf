@@ -7,7 +7,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel {
         SearchScreenViewModel(
-            getBooksUseCase = get()
+            searchBooksUseCase = get()
         )
     }
 }
