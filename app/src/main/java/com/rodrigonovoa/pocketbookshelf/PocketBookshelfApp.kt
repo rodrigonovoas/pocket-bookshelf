@@ -2,6 +2,7 @@ package com.rodrigonovoa.pocketbookshelf
 
 import android.app.Application
 import com.rodrigonovoa.pocketbookshelf.di.dataModule
+import com.rodrigonovoa.pocketbookshelf.di.databaseModule
 import com.rodrigonovoa.pocketbookshelf.di.domainModule
 import com.rodrigonovoa.pocketbookshelf.di.networkModule
 import com.rodrigonovoa.pocketbookshelf.di.viewModelModule
@@ -17,6 +18,7 @@ class PocketBookshelfApp: Application() {
             modules(
                 networkModule,
                 dataModule,
+                databaseModule,
                 domainModule,
                 viewModelModule
             )

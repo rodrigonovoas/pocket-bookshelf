@@ -5,13 +5,15 @@ import androidx.lifecycle.viewModelScope
 import com.rodrigonovoa.domain.model.BookDetail
 import com.rodrigonovoa.domain.repository.Resource
 import com.rodrigonovoa.domain.usecase.GetBookDetailUseCase
+import com.rodrigonovoa.domain.usecase.SaveBookUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 
 class DetailScreenViewModel(
-    private val getBookDetailUseCase: GetBookDetailUseCase
+    private val getBookDetailUseCase: GetBookDetailUseCase,
+    private val saveBookUseCase: SaveBookUseCase
 ): ViewModel() {
     private val _uiState: MutableStateFlow<Resource<BookDetail>?> = MutableStateFlow(null)
     val uiState: StateFlow<Resource<BookDetail>?> = _uiState
@@ -34,6 +36,12 @@ class DetailScreenViewModel(
                         }
                     }
                 }
+        }
+    }
+
+    fun saveBook(book: BookDetail) {
+        viewModelScope.launch {
+            saveBookUseCase.invoke(book)
         }
     }
 }

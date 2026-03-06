@@ -1,4 +1,4 @@
-package com.rodrigonovoa.data.remote.booksApi.repository
+package com.rodrigonovoa.data.remote.booksApi.repository.remote
 
 import com.rodrigonovoa.data.remote.booksApi.api.GoogleBooksApi
 import com.rodrigonovoa.domain.model.BookDetail

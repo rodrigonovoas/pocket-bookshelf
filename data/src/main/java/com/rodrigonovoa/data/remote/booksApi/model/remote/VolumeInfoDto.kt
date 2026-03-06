@@ -1,4 +1,4 @@
-package com.rodrigonovoa.data.remote.booksApi.model
+package com.rodrigonovoa.data.remote.booksApi.model.remote
 
 import com.rodrigonovoa.domain.model.VolumeInfo
 

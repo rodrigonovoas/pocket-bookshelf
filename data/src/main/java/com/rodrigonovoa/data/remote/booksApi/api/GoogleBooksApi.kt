@@ -1,7 +1,7 @@
 package com.rodrigonovoa.data.remote.booksApi.api
 
-import com.rodrigonovoa.data.remote.booksApi.model.BookDetailDto
-import com.rodrigonovoa.data.remote.booksApi.model.BooksListDto
+import com.rodrigonovoa.data.remote.booksApi.model.remote.BookDetailDto
+import com.rodrigonovoa.data.remote.booksApi.model.remote.BooksListDto
 import com.rodrigonovoa.pocketbookshelf.data.BuildConfig
 import retrofit2.http.GET
 import retrofit2.http.Path

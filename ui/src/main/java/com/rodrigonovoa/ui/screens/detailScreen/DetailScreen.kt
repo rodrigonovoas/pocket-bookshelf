@@ -28,13 +28,20 @@ fun DetailScreen(
     when (val state = book) {
         is Resource.Loading -> {}
         is Resource.Error   -> {}
-        is Resource.Success -> { DetailScreenContent(state.data) }
+        is Resource.Success -> {
+            DetailScreenContent(state.data) {
+                viewModel.saveBook(state.data)
+            }
+        }
         null -> {  }
     }
 }
 
 @Composable
-private fun DetailScreenContent(bookDetail: BookDetail) {
+private fun DetailScreenContent(
+    bookDetail: BookDetail,
+    onSaveButtonClicked: () -> Unit
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -49,7 +56,7 @@ private fun DetailScreenContent(bookDetail: BookDetail) {
             Text(bookDetail.description ?: "")
 
             Button(
-                onClick = {}
+                onClick = { onSaveButtonClicked.invoke() }
             ) {
                 Text(text = "Save book")
             }

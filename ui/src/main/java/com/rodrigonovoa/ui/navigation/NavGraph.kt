@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.rodrigonovoa.domain.usecase.GetBookDetailUseCase
+import com.rodrigonovoa.domain.usecase.SaveBookUseCase
 import com.rodrigonovoa.domain.usecase.SearchBooksUseCase
 import com.rodrigonovoa.ui.main.HomeScreen
 import com.rodrigonovoa.ui.main.SettingsScreen
@@ -21,9 +22,10 @@ import org.koin.androidx.compose.get
 fun NavGraph(navController: NavHostController) {
     val searchBooksUseCase: SearchBooksUseCase = get()
     val getBookDetailUseCase: GetBookDetailUseCase = get()
+    val saveBookUseCase: SaveBookUseCase = get()
 
     val searchViewModel = remember { SearchScreenViewModel(searchBooksUseCase) }
-    val detailScreenViewModel = remember { DetailScreenViewModel(getBookDetailUseCase) }
+    val detailScreenViewModel = remember { DetailScreenViewModel(getBookDetailUseCase, saveBookUseCase) }
 
     NavHost(
         navController = navController,
