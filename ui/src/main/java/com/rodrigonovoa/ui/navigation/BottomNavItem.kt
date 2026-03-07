@@ -11,7 +11,7 @@ sealed class BottomNavItem(
     val label: String,
     val icon: ImageVector
 ) {
-    object Home : BottomNavItem("home", "Biblioteca", Icons.Default.Home)
-    object Search : BottomNavItem("search", "Búsqueda", Icons.Default.Search)
-    object Settings : BottomNavItem("settings", "Ajustes", Icons.Default.Settings)
+    object Home : BottomNavItem("home", "Bookshelf", Icons.Default.Home)
+    object Search : BottomNavItem("search", "Search", Icons.Default.Search)
+    object Settings : BottomNavItem("settings", "Settings", Icons.Default.Settings)
 }

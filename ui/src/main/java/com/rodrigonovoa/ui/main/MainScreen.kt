@@ -26,11 +26,6 @@ fun MainScreen() {
 }
 
 @Composable
-fun HomeScreen() {
-    Text("Home Screen")
-}
-
-@Composable
 fun SettingsScreen() {
     Text("Settings Screen")
 }
