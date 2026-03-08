@@ -24,8 +24,3 @@ fun MainScreen() {
         }
     }
 }
-
-@Composable
-fun SettingsScreen() {
-    Text("Settings Screen")
-}

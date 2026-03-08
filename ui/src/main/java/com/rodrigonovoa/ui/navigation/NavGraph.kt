@@ -11,13 +11,13 @@ import com.rodrigonovoa.domain.usecase.GetBookDetailUseCase
 import com.rodrigonovoa.domain.usecase.GetBooksUseCase
 import com.rodrigonovoa.domain.usecase.SaveBookUseCase
 import com.rodrigonovoa.domain.usecase.SearchBooksUseCase
-import com.rodrigonovoa.ui.main.SettingsScreen
 import com.rodrigonovoa.ui.screens.detailScreen.DetailScreen
 import com.rodrigonovoa.ui.screens.detailScreen.DetailScreenViewModel
 import com.rodrigonovoa.ui.screens.libraryScreen.LibraryScreen
 import com.rodrigonovoa.ui.screens.libraryScreen.LibraryScreenViewModel
 import com.rodrigonovoa.ui.screens.searchScreen.SearchScreen
 import com.rodrigonovoa.ui.screens.searchScreen.SearchScreenViewModel
+import com.rodrigonovoa.ui.screens.settingsScreen.SettingsScreen
 import org.koin.androidx.compose.get
 
 @Composable
