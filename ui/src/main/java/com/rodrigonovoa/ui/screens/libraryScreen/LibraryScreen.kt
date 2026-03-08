@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.rodrigonovoa.domain.model.Book
@@ -31,8 +33,22 @@ fun LibraryScreen(
 ) {
     val books by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Column {
-        Text("BOOKSHELF")
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "BookShelf",
+            fontSize = 26.sp,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = (-0.5).sp
+        )
+
+        Spacer(modifier = Modifier.height(28.dp))
+
         BookListItem(books)
     }
 }
@@ -50,7 +66,6 @@ fun BookListItem(books: List<Book>?) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp, end = 8.dp)
                     .clickable { },
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
